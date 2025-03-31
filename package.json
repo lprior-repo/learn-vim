@@ -1,11 +1,13 @@
-
+{
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "bun run build.ts",
+    "build:prod": "NODE_ENV=production bun run build.ts",
     "dev": "bun run build.ts && bun run --watch server.ts",
-    "start": "bun run build.ts && NODE_ENV=production bun run server.ts"
+    "start": "bun run server.ts",
+    "deploy": "bun run build:prod && bun run server.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
