@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vim in Monaco Editor</title>
+    <!-- Load Monaco and Vim scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script>
+      // Set up error handling and globals
+      window.monacoLoadError = null;
+      window.monacoReady = false;
+      window.vimReady = false;
+      
+      // Configure Monaco loader with proper AMD paths
+      require.config({
+        paths: {
+          vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs',
+          'monaco-vim': 'https://cdn.jsdelivr.net/npm/monaco-vim@0.4.2/dist/monaco-vim'
+        }
+      });
+
+      // Signal when both libraries are ready
+      function checkAndSignalReady() {
+        if (window.monacoReady && window.vimReady) {
+          console.log('Both Monaco and Vim are confirmed ready');
+          
+          // Ensure MonacoVim is properly initialized
+          if (window.monaco && window.MonacoVim && typeof window.MonacoVim.initVimMode === 'function') {
+            document.dispatchEvent(new Event('monaco-vim-ready'));
+          } else {
+            console.error('Libraries loaded but not properly initialized');
+            window.monacoLoadError = 'Libraries loaded but not properly initialized';
+          }
+        }
+      }
+
+      // First load Monaco, then load Monaco-Vim properly as AMD module
+      require(['vs/editor/editor.main'], function() {
+        console.log('Monaco loaded successfully');
+        window.monacoReady = true;
+        
+        // Load monaco-vim as AMD module
+        require(['monaco-vim'], function(MonacoVim) {
+          console.log('Vim extension loaded successfully via AMD');
+          window.MonacoVim = MonacoVim;
+          window.vimReady = true;
+          checkAndSignalReady();
+        }, function(error) {
+          console.error('Failed to load Vim extension via AMD', error);
+          
+          // Fallback: Try loading monaco-vim directly if AMD fails
+          console.log('Attempting fallback: Loading monaco-vim directly');
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/monaco-vim@0.4.2/dist/monaco-vim.js';
+          script.onload = function() {
+            console.log('Vim extension loaded successfully via direct script');
+            window.vimReady = true;
+            checkAndSignalReady();
+          };
+          script.onerror = function(e) {
+            console.error('Failed to load Vim extension', e);
+            window.monacoLoadError = 'Failed to load Vim extension';
+          };
+          document.head.appendChild(script);
+        });
+      }, function(error) {
+        console.error('Failed to load Monaco', error);
+        window.monacoLoadError = 'Failed to load Monaco: ' + error;
+      });
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      /* Loading spinner */
+      .loader {
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        border-top: 4px solid #007acc;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 100px auto;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loader"></div>
+    </div>
+    <script type="module" src="App.js"></script>
+  </body>
+</html>
