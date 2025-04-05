@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#1e1e1e] text-[#d4d4d4] m-0 p-0 font-sans;
+  }
+}
+
+@layer components {
+  .loader {
+    @apply w-10 h-10 border-4 border-[rgba(255,255,255,0.2)] border-t-[#007acc] rounded-full animate-spin mx-auto my-[100px];
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

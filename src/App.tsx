@@ -185,162 +185,64 @@ const MonacoVimEditor: React.FC<EditorProps> = ({ content, onModeChange }) => {
     };
   }, [content, onModeChange]);
 
-  const styles = {
-    wrapper: {
-      position: 'relative' as const,
-      height: '500px',
-      borderRadius: '5px',
-      overflow: 'hidden' as const,
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-      border: '1px solid #444'
-    },
-    editor: {
-      width: '100%',
-      height: 'calc(100% - 30px)'
-    },
-    statusBar: {
-      height: '30px',
-      backgroundColor: '#3a3a3a',
-      color: '#d4d4d4',
-      fontFamily: 'monospace',
-      padding: '0 10px',
-      display: 'flex' as const,
-      alignItems: 'center' as const,
-      borderTop: '1px solid #444'
-    },
-    loading: {
-      position: 'absolute' as const,
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      display: 'flex' as const,
-      justifyContent: 'center' as const,
-      alignItems: 'center' as const,
-      backgroundColor: 'rgba(30, 30, 30, 0.9)',
-      zIndex: 10
-    },
-    error: {
-      position: 'absolute' as const,
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      display: 'flex' as const,
-      justifyContent: 'center' as const,
-      alignItems: 'center' as const,
-      backgroundColor: 'rgba(100, 30, 30, 0.9)',
-      color: '#f14c4c',
-      zIndex: 10
-    }
-  };
-
   return (
-    <div style={styles.wrapper}>
+    <div className="relative h-[500px] rounded-md overflow-hidden shadow-lg border border-neutral-700">
       {loading && (
-        <div style={styles.loading}>
+        <div className="absolute inset-0 flex justify-center items-center bg-neutral-900/90 z-10">
           <p>Loading editor...</p>
         </div>
       )}
 
       {error && (
-        <div style={styles.error}>
+        <div className="absolute inset-0 flex justify-center items-center bg-red-900/90 text-red-400 z-10">
           <p>Error: {error}</p>
         </div>
       )}
 
-      <div ref={editorRef} style={styles.editor}></div>
-      <div ref={statusBarRef} style={styles.statusBar}></div>
+      <div ref={editorRef} className="w-full h-[calc(100%-30px)]"></div>
+      <div 
+        ref={statusBarRef} 
+        className="h-[30px] bg-neutral-800 text-neutral-300 font-mono px-2.5 flex items-center border-t border-neutral-700"
+      ></div>
     </div>
   );
 };
 
 // Mode Indicator component
 const ModeIndicator: React.FC<ModeIndicatorProps> = ({ mode }) => {
-  const getColorForMode = (mode: string): string => {
+  const getModeColor = (mode: string): string => {
     switch (mode) {
-      case 'Insert': return '#6a9955';
+      case 'Insert': return 'bg-[#6a9955] text-black';
       case 'Visual':
       case 'Visual Line':
-      case 'Visual Block': return '#b58900';
+      case 'Visual Block': return 'bg-[#b58900] text-black';
       case 'Normal':
-      default: return '#007acc';
-    }
-  };
-
-  const styles = {
-    container: {
-      marginTop: '10px',
-      fontWeight: 'bold' as const
-    },
-    mode: {
-      display: 'inline-block' as const,
-      padding: '2px 8px',
-      borderRadius: '4px',
-      marginLeft: '5px',
-      fontFamily: 'monospace',
-      backgroundColor: getColorForMode(mode),
-      color: mode === 'Insert' || mode.includes('Visual') ? 'black' : 'white'
+      default: return 'bg-[#007acc] text-white';
     }
   };
 
   return (
-    <div style={styles.container}>
-      Current Mode: <span style={styles.mode}>{mode}</span>
+    <div className="mt-2.5 font-bold">
+      Current Mode: 
+      <span className={`inline-block py-0.5 px-2 rounded ml-1.5 font-mono ${getModeColor(mode)}`}>
+        {mode}
+      </span>
     </div>
   );
 };
 
 // Commands Panel component
 const CommandsPanel: React.FC<CommandsPanelProps> = ({ commands }) => {
-  const styles = {
-    panel: {
-      backgroundColor: '#3a3a3a',
-      borderRadius: '5px',
-      padding: '15px',
-      border: '1px solid #444'
-    },
-    title: {
-      marginBottom: '15px',
-      fontSize: '1.5rem',
-      color: '#569cd6'
-    },
-    grid: {
-      display: 'grid' as const,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-      gap: '8px'
-    },
-    item: {
-      display: 'flex' as const,
-      alignItems: 'center' as const,
-      gap: '8px',
-      padding: '5px',
-      borderRadius: '4px',
-      backgroundColor: 'rgba(0, 0, 0, 0.2)'
-    },
-    keyBadge: {
-      backgroundColor: '#007acc',
-      color: 'white',
-      padding: '2px 6px',
-      borderRadius: '3px',
-      fontFamily: 'monospace',
-      fontWeight: 'bold' as const,
-      minWidth: '28px',
-      textAlign: 'center' as const
-    },
-    description: {
-      fontSize: '14px'
-    }
-  };
-
   return (
-    <div style={styles.panel}>
-      <h2 style={styles.title}>Vim Commands Reference</h2>
-      <div style={styles.grid}>
+    <div className="bg-neutral-800 rounded-md p-4 border border-neutral-700">
+      <h2 className="mb-4 text-2xl text-[#569cd6]">Vim Commands Reference</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {commands.map((command, index) => (
-          <div key={index} style={styles.item}>
-            <span style={styles.keyBadge}>{command.key}</span>
-            <span style={styles.description}>{command.description}</span>
+          <div key={index} className="flex items-center gap-2 p-1.5 rounded bg-black/20">
+            <span className="bg-[#007acc] text-white py-0.5 px-1.5 rounded font-mono font-bold min-w-[28px] text-center">
+              {command.key}
+            </span>
+            <span className="text-sm">{command.description}</span>
           </div>
         ))}
       </div>
@@ -352,68 +254,28 @@ const CommandsPanel: React.FC<CommandsPanelProps> = ({ commands }) => {
 const App: React.FC = () => {
   const [currentMode, setCurrentMode] = useState<string>("Normal");
 
-  const styles = {
-    container: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '20px'
-    },
-    header: {
-      textAlign: 'center' as const,
-      marginBottom: '20px',
-      paddingBottom: '20px',
-      borderBottom: '1px solid #444'
-    },
-    title: {
-      marginBottom: '5px',
-      color: '#007acc'
-    },
-    subtitle: {
-      color: '#d4d4d4'
-    },
-    mainContent: {
-      display: 'flex' as const,
-      flexDirection: 'column' as const,
-      gap: '20px',
-    },
-    editorContainer: {
-      flex: 3
-    },
-    panelContainer: {
-      flex: 1
-    },
-    footer: {
-      marginTop: '20px',
-      textAlign: 'center' as const,
-      fontSize: '14px',
-      color: '#888',
-      paddingTop: '20px',
-      borderTop: '1px solid #444'
-    }
-  };
-
   return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>Vim in Monaco Editor</h1>
-        <p style={styles.subtitle}>Practice Vim commands in this interactive editor</p>
+    <div className="max-w-7xl mx-auto p-5">
+      <header className="text-center mb-5 pb-5 border-b border-neutral-700">
+        <h1 className="mb-1.5 text-[#007acc]">Vim in Monaco Editor</h1>
+        <p className="text-neutral-300">Practice Vim commands in this interactive editor</p>
         <ModeIndicator mode={currentMode} />
       </header>
 
-      <div style={styles.mainContent}>
-        <div style={styles.editorContainer}>
+      <div className="flex flex-col gap-5">
+        <div>
           <MonacoVimEditor
             content={EDITOR_CONTENT}
             onModeChange={setCurrentMode}
           />
         </div>
 
-        <div style={styles.panelContainer}>
+        <div>
           <CommandsPanel commands={VIM_COMMANDS} />
         </div>
       </div>
 
-      <footer style={styles.footer}>
+      <footer className="mt-5 text-center text-sm text-neutral-500 pt-5 border-t border-neutral-700">
         <p>Practice makes perfect! Keep trying different Vim commands to build muscle memory.</p>
       </footer>
     </div>

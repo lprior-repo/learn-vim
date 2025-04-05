@@ -23,6 +23,29 @@ async function runBuild() {
     await Bun.file("./src/index.html").text()
   );
 
+  // Process CSS with Tailwind
+  console.log("🎨 Processing CSS with Tailwind...");
+  try {
+    const tailwindcss = require("tailwindcss");
+    const postcss = require("postcss");
+    const autoprefixer = require("autoprefixer");
+    
+    const css = await Bun.file("./src/index.css").text();
+    const result = await postcss([
+      tailwindcss,
+      autoprefixer
+    ]).process(css, {
+      from: "./src/index.css",
+      to: "./dist/index.css"
+    });
+    
+    await Bun.write(path.join(distDir, "index.css"), result.css);
+    console.log("✅ CSS processed successfully");
+  } catch (error) {
+    console.error("❌ Error processing CSS:", error);
+    process.exit(1);
+  }
+
   // Build options for app
   const buildOptions: BuildConfig = {
     entrypoints: ["./src/App.tsx"],
