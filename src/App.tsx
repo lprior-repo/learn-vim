@@ -205,7 +205,7 @@ const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
   });
 
   return (
-    <div className="relative h-[500px] rounded-md overflow-hidden shadow-lg border border-neutral-700">
+    <div className="relative h-[50vh] min-h-[300px] md:h-[500px] lg:h-[60vh] rounded-md overflow-hidden shadow-lg border border-neutral-700">
       {loading && (
         <div className="absolute inset-0 flex justify-center items-center bg-neutral-900/90 z-10">
           <p>Loading editor...</p>
@@ -221,7 +221,7 @@ const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
       <div ref={editorRef} className="w-full h-[calc(100%-30px)]"></div>
       <div 
         ref={statusBarRef} 
-        className="h-[30px] bg-neutral-800 text-neutral-300 font-mono px-2.5 flex items-center border-t border-neutral-700"
+        className="h-[30px] bg-neutral-800 text-neutral-300 text-xs sm:text-sm font-mono px-2 sm:px-2.5 flex items-center border-t border-neutral-700 overflow-x-auto"
       ></div>
     </div>
   );
@@ -241,7 +241,7 @@ const ModeIndicator = ({ mode }: ModeIndicatorProps) => {
   };
 
   return (
-    <div className="mt-2.5 font-bold">
+    <div className="mt-2 sm:mt-2.5 font-bold text-sm sm:text-base">
       Current Mode: 
       <span className={`inline-block py-0.5 px-2 rounded ml-1.5 font-mono ${getModeColor(mode)}`}>
         {mode}
@@ -253,15 +253,15 @@ const ModeIndicator = ({ mode }: ModeIndicatorProps) => {
 // Commands Panel component
 const CommandsPanel = ({ commands }: CommandsPanelProps) => {
   return (
-    <div className="bg-neutral-800 rounded-md p-4 border border-neutral-700">
-      <h2 className="mb-4 text-2xl text-[#569cd6]">Vim Commands Reference</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+    <div className="bg-neutral-800 rounded-md p-3 sm:p-4 border border-neutral-700">
+      <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl text-[#569cd6]">Vim Commands Reference</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-2">
         {commands.map((command, index) => (
-          <div key={index} className="flex items-center gap-2 p-1.5 rounded bg-black/20">
-            <span className="bg-[#007acc] text-white py-0.5 px-1.5 rounded font-mono font-bold min-w-[28px] text-center">
+          <div key={index} className="flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded bg-black/20">
+            <span className="bg-[#007acc] text-white py-0.5 px-1.5 rounded font-mono font-bold min-w-[24px] sm:min-w-[28px] text-center text-xs sm:text-sm">
               {command.key}
             </span>
-            <span className="text-sm">{command.description}</span>
+            <span className="text-xs sm:text-sm">{command.description}</span>
           </div>
         ))}
       </div>
@@ -274,14 +274,14 @@ const App = () => {
   const [currentMode, setCurrentMode] = useState<string>("Normal");
 
   return (
-    <div className="max-w-7xl mx-auto p-5">
-      <header className="text-center mb-5 pb-5 border-b border-neutral-700">
-        <h1 className="mb-1.5 text-[#007acc]">Vim in Monaco Editor</h1>
-        <p className="text-neutral-300">Practice Vim commands in this interactive editor</p>
+    <div className="max-w-7xl mx-auto px-2 sm:px-3 md:px-5 py-3 sm:py-5">
+      <header className="text-center mb-3 sm:mb-5 pb-3 sm:pb-5 border-b border-neutral-700">
+        <h1 className="mb-1 sm:mb-1.5 text-xl sm:text-2xl md:text-3xl text-[#007acc]">Vim in Monaco Editor</h1>
+        <p className="text-sm sm:text-base text-neutral-300">Practice Vim commands in this interactive editor</p>
         <ModeIndicator mode={currentMode} />
       </header>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-3 sm:gap-5">
         <div>
           <MonacoVimEditor
             content={EDITOR_CONTENT}
@@ -294,7 +294,7 @@ const App = () => {
         </div>
       </div>
 
-      <footer className="mt-5 text-center text-sm text-neutral-500 pt-5 border-t border-neutral-700">
+      <footer className="mt-5 text-center text-xs sm:text-sm text-neutral-500 pt-3 sm:pt-5 border-t border-neutral-700">
         <p>Practice makes perfect! Keep trying different Vim commands to build muscle memory.</p>
       </footer>
     </div>
