@@ -97,120 +97,32 @@ const MonacoVimEditor: React.FC<EditorProps> = ({ content, onModeChange }) => {
     let vim: any = null;
     let modeObserver: MutationObserver | null = null;
 
-    // Improved Monaco and Vim loading mechanism
-    const getMonacoAndVim = async () => {
-      return new Promise<void>((resolve, reject) => {
-        // Function to check if both libraries are loaded and fully initialized
-        const checkLoaded = () => {
-          // Check for Monaco
-          const monacoLoaded = !!(window as any).monaco && 
-                               !!(window as any).monaco.editor && 
-                               typeof (window as any).monaco.editor.create === 'function';
-          
-          // Check for MonacoVim
-          const vimLoaded = !!(window as any).MonacoVim && 
-                            typeof (window as any).MonacoVim.initVimMode === 'function';
-          
-          console.log(`Library check: Monaco: ${monacoLoaded}, Vim: ${vimLoaded}`);
-          
-          if (monacoLoaded && vimLoaded) {
-            console.log("Both Monaco and Vim are fully loaded and verified");
-            resolve();
-            return true;
-          }
-          return false;
-        };
-        
-        // Try loading libraries using AMD pattern
-        const loadLibrariesAMD = () => {
-          console.log("Attempting to load libraries via AMD");
-          
-          const requireFunc = (window as any).require;
-          if (typeof requireFunc !== 'function') {
-            console.error("AMD loader not available");
-            return false;
-          }
-          
-          // Configure AMD loader if not already configured
-          if (!(window as any).monacoLoaderConfigured) {
-            requireFunc.config({
-              paths: {
-                vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs',
-                'monaco-vim': 'https://cdn.jsdelivr.net/npm/monaco-vim@0.4.2/dist/monaco-vim'
-              }
-            });
-            (window as any).monacoLoaderConfigured = true;
-          }
-          
-          // Load Monaco and then MonacoVim
-          requireFunc(['vs/editor/editor.main'], () => {
-            console.log("Monaco loaded via AMD");
-            
-            requireFunc(['monaco-vim'], (MonacoVim: any) => {
-              console.log("MonacoVim loaded via AMD");
-              (window as any).MonacoVim = MonacoVim;
-              checkLoaded();
-            });
-          });
-          
-          return true;
-        };
-        
-        // Listen for the custom event from index.html
-        document.addEventListener('monaco-vim-ready', () => {
-          console.log("Received monaco-vim-ready event");
-          // Verify libraries with a short delay to ensure initialization is complete
-          setTimeout(() => {
-            if (checkLoaded()) {
-              console.log("Libraries verified after receiving ready event");
-            } else {
-              console.warn("Event received but libraries not verified, continuing to wait");
-            }
-          }, 500);
-        }, { once: true });
-        
-        // Check if already loaded
-        if (checkLoaded()) return;
-        
-        console.log("Libraries not initially loaded, trying to load them");
-        
-        // Try AMD loader first
-        if (!(window as any).monacoAMDAttempted) {
-          (window as any).monacoAMDAttempted = true;
-          if (loadLibrariesAMD()) {
-            console.log("AMD loading initiated");
-          }
-        }
-        
-        // Fallback: Poll for libraries to be loaded (max 15 seconds)
-        let attempts = 0;
-        const interval = setInterval(() => {
-          attempts++;
-          if (checkLoaded() || attempts > 75) { // Check for 15 seconds (75 * 200ms)
-            clearInterval(interval);
-            if (attempts > 75 && !checkLoaded()) {
-              const error = new Error('Timeout waiting for Monaco and Vim to load');
-              console.error(error);
-              reject(error);
-            }
-          }
-        }, 200);
-      });
-    };
-
     const initEditor = async () => {
       try {
-        setLoading(true);
+        // Wait for Monaco and Vim to be ready from the event triggered in index.html
+        const waitForLibraries = () => {
+          return new Promise<void>((resolve, reject) => {
+            // Check if already loaded
+            if ((window as any).monaco && (window as any).MonacoVim) {
+              resolve();
+              return;
+            }
 
-        // Wait for Monaco and Vim to be loaded
-        await getMonacoAndVim();
+            // Listen for the custom event from index.html
+            document.addEventListener('monaco-vim-ready', () => resolve(), { once: true });
+            
+            // Set timeout in case libraries don't load
+            setTimeout(() => {
+              reject(new Error('Timeout waiting for Monaco and Vim to load'));
+            }, 10000);
+          });
+        };
+
+        await waitForLibraries();
         
-        // Get Monaco from window object
         const monaco = (window as any).monaco;
-        if (!monaco) {
-          throw new Error('Monaco not loaded properly');
-        }
-
+        const MonacoVim = (window as any).MonacoVim;
+        
         // Create editor instance
         editor = monaco.editor.create(editorRef.current, {
           value: content,
@@ -223,77 +135,11 @@ const MonacoVimEditor: React.FC<EditorProps> = ({ content, onModeChange }) => {
           wordWrap: 'on',
           automaticLayout: true
         });
-
-        // Improved Vim mode initialization with better error handling and retry mechanism
-        const initVimWithRetry = (retryCount = 0, maxRetries = 3) => {
-          const MonacoVim = (window as any).MonacoVim;
-          
-          if (!MonacoVim) {
-            if (retryCount < maxRetries) {
-              console.warn(`Vim extension not found, retrying in 500ms (attempt ${retryCount + 1}/${maxRetries})`);
-              setTimeout(() => initVimWithRetry(retryCount + 1, maxRetries), 500);
-              return;
-            }
-            throw new Error('Vim extension not loaded properly after multiple attempts');
-          }
-          
-          // Different ways MonacoVim might expose the initVimMode function
-          let initVimMode;
-          
-          // Check different possible locations for the initVimMode function
-          if (typeof MonacoVim.initVimMode === 'function') {
-            console.log('Found initVimMode function directly on MonacoVim object');
-            initVimMode = MonacoVim.initVimMode;
-          } else if (typeof MonacoVim.default === 'object' && typeof MonacoVim.default.initVimMode === 'function') {
-            console.log('Found initVimMode function on MonacoVim.default');
-            initVimMode = MonacoVim.default.initVimMode;
-          } else if (typeof MonacoVim === 'function') {
-            console.log('MonacoVim appears to be the initVimMode function itself');
-            initVimMode = MonacoVim;
-          } else {
-            // Log the structure of the MonacoVim object to help debugging
-            console.error('MonacoVim structure:', JSON.stringify(Object.keys(MonacoVim)));
-            
-            if (retryCount < maxRetries) {
-              console.warn(`initVimMode function not found, retrying in 500ms (attempt ${retryCount + 1}/${maxRetries})`);
-              setTimeout(() => initVimWithRetry(retryCount + 1, maxRetries), 500);
-              return;
-            }
-            throw new Error('initVimMode function not found on MonacoVim object after multiple attempts');
-          }
-          
-          console.log('Initializing Vim mode...');
-          try {
-            // Ensure the status bar element is ready
-            if (!statusBarRef.current) {
-              throw new Error('Status bar element is not ready');
-            }
-            
-            // Initialize Vim mode with the found function
-            vim = initVimMode(editor, statusBarRef.current);
-            console.log('Vim mode initialized successfully');
-            
-            // Verify Vim mode was properly initialized
-            if (!vim || typeof vim.dispose !== 'function') {
-              throw new Error('Vim mode initialization returned invalid object');
-            }
-          } catch (vimError: any) {
-            console.error('Error initializing Vim mode:', vimError);
-            
-            if (retryCount < maxRetries) {
-              console.warn(`Failed to initialize Vim mode, retrying in 1000ms (attempt ${retryCount + 1}/${maxRetries})`);
-              setTimeout(() => initVimWithRetry(retryCount + 1, maxRetries), 1000);
-              return;
-            }
-            
-            throw new Error(`Failed to initialize Vim mode after ${maxRetries} attempts: ${vimError.message}`);
-          }
-        };
         
-        // Start the Vim initialization with retry logic
-        initVimWithRetry();
+        // Initialize Vim mode
+        vim = MonacoVim.initVimMode(editor, statusBarRef.current);
 
-        // Add mode change listener if callback provided
+        // Add mode change listener
         if (onModeChange && statusBarRef.current) {
           modeObserver = new MutationObserver((mutations) => {
             for (const mutation of mutations) {
@@ -329,9 +175,7 @@ const MonacoVimEditor: React.FC<EditorProps> = ({ content, onModeChange }) => {
 
     // Cleanup function
     return () => {
-      if (modeObserver) {
-        modeObserver.disconnect();
-      }
+      modeObserver?.disconnect();
       if (vim) {
         try { vim.dispose(); } catch (e) { /* ignore */ }
       }
@@ -504,61 +348,9 @@ const CommandsPanel: React.FC<CommandsPanelProps> = ({ commands }) => {
   );
 };
 
-// Debug Info component to help troubleshoot
-const DebugInfo: React.FC = () => {
-  const [info, setInfo] = useState<{ [key: string]: any }>({
-    monacoLoaded: false,
-    vimLoaded: false,
-    error: null
-  });
-
-  useEffect(() => {
-    const checkStatus = () => {
-      setInfo({
-        monacoLoaded: !!(window as any).monaco,
-        vimLoaded: !!(window as any).MonacoVim,
-        error: (window as any).monacoLoadError || null
-      });
-    };
-
-    // Initial check
-    checkStatus();
-
-    // Set up interval to check status
-    const interval = setInterval(checkStatus, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const styles = {
-    debug: {
-      backgroundColor: '#202020',
-      padding: '10px',
-      marginBottom: '10px',
-      borderRadius: '5px',
-      fontFamily: 'monospace',
-      fontSize: '12px'
-    }
-  };
-
-  return (
-    <div style={styles.debug}>
-      <div>Monaco Loaded: {info.monacoLoaded ? '✅' : '❌'}</div>
-      <div>Vim Extension Loaded: {info.vimLoaded ? '✅' : '❌'}</div>
-      {info.error && <div style={{ color: 'red' }}>Error: {info.error}</div>}
-    </div>
-  );
-};
-
 // Main App component
 const App: React.FC = () => {
   const [currentMode, setCurrentMode] = useState<string>("Normal");
-  const [showDebug, setShowDebug] = useState<boolean>(true);
-
-  useEffect(() => {
-    // Hide debug panel after 10 seconds
-    const timer = setTimeout(() => setShowDebug(false), 10000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const styles = {
     container: {
@@ -607,8 +399,6 @@ const App: React.FC = () => {
         <p style={styles.subtitle}>Practice Vim commands in this interactive editor</p>
         <ModeIndicator mode={currentMode} />
       </header>
-
-      {showDebug && <DebugInfo />}
 
       <div style={styles.mainContent}>
         <div style={styles.editorContainer}>

@@ -27,6 +27,21 @@ function getMimeType(filePath: string): string {
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 const IS_DEV = process.env.NODE_ENV !== "production";
 
+// Function to try serving a file from a directory
+function tryServeFile(pathname: string, baseDir: string) {
+  const filePath = path.join(baseDir, pathname.startsWith("/") ? pathname.slice(1) : pathname);
+  
+  if (existsSync(filePath)) {
+    const contentType = getMimeType(filePath);
+    if (IS_DEV) {
+      console.log(`Serving ${pathname} from ${baseDir} with content type: ${contentType}`);
+    }
+    return new Response(Bun.file(filePath), { headers: { "Content-Type": contentType } });
+  }
+  
+  return null;
+}
+
 // Start server
 const server = serve({
   port: PORT,
@@ -47,41 +62,15 @@ const server = serve({
       });
     }
 
-    // Try to serve files from dist directory
-    let filePath = path.join(process.cwd(), "dist", pathname.startsWith("/") ? pathname.slice(1) : pathname);
-    if (existsSync(filePath)) {
-      try {
-        const contentType = getMimeType(filePath);
-        if (IS_DEV) {
-          console.log(`Serving ${pathname} with content type: ${contentType}`);
-        }
-
-        return new Response(Bun.file(filePath), {
-          headers: { "Content-Type": contentType }
-        });
-      } catch (error) {
-        console.error(`Error serving file ${pathname}:`, error);
-      }
-    }
+    // Try to serve from dist directory first
+    const distResponse = tryServeFile(pathname, path.join(process.cwd(), "dist"));
+    if (distResponse) return distResponse;
     
-    // Fallback to serving from current directory (for testing)
-    filePath = path.join(process.cwd(), pathname);
-    if (existsSync(filePath)) {
-      try {
-        const contentType = getMimeType(filePath);
-        if (IS_DEV) {
-          console.log(`Serving ${pathname} from root with content type: ${contentType}`);
-        }
+    // Fallback to serving from current directory
+    const rootResponse = tryServeFile(pathname, process.cwd());
+    if (rootResponse) return rootResponse;
 
-        return new Response(Bun.file(filePath), {
-          headers: { "Content-Type": contentType }
-        });
-      } catch (error) {
-        console.error(`Error serving file ${pathname}:`, error);
-      }
-    }
-
-    // For any other path, redirect to index.html (SPA style)
+    // For any other path without extension, serve index.html (SPA style)
     if (!pathname.includes(".")) {
       return new Response(Bun.file("./dist/index.html"), {
         headers: { "Content-Type": "text/html" }
