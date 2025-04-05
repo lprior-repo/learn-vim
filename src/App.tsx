@@ -84,7 +84,7 @@ Current mode is shown in the status bar below the editor.
 `;
 
 // Monaco Editor component with Vim binding
-const MonacoVimEditor: React.FC<EditorProps> = ({ content, onModeChange }) => {
+const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const statusBarRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
@@ -209,7 +209,7 @@ const MonacoVimEditor: React.FC<EditorProps> = ({ content, onModeChange }) => {
 };
 
 // Mode Indicator component
-const ModeIndicator: React.FC<ModeIndicatorProps> = ({ mode }) => {
+const ModeIndicator = ({ mode }: ModeIndicatorProps) => {
   const getModeColor = (mode: string): string => {
     switch (mode) {
       case 'Insert': return 'bg-[#6a9955] text-black';
@@ -232,7 +232,7 @@ const ModeIndicator: React.FC<ModeIndicatorProps> = ({ mode }) => {
 };
 
 // Commands Panel component
-const CommandsPanel: React.FC<CommandsPanelProps> = ({ commands }) => {
+const CommandsPanel = ({ commands }: CommandsPanelProps) => {
   return (
     <div className="bg-neutral-800 rounded-md p-4 border border-neutral-700">
       <h2 className="mb-4 text-2xl text-[#569cd6]">Vim Commands Reference</h2>
@@ -251,7 +251,7 @@ const CommandsPanel: React.FC<CommandsPanelProps> = ({ commands }) => {
 };
 
 // Main App component
-const App: React.FC = () => {
+const App = () => {
   const [currentMode, setCurrentMode] = useState<string>("Normal");
 
   return (
