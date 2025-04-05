@@ -83,18 +83,18 @@ Move around with h, j, k, l and try word navigation with w, b, e.
 Current mode is shown in the status bar below the editor.
 `;
 
-// Monaco Editor component with Vim binding
-const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
-  const editorRef = useRef<HTMLDivElement>(null);
-  const statusBarRef = useRef<HTMLDivElement>(null);
+// Custom hook for Monaco and Vim initialization
+function useMonacoVim({ content, onModeChange }: EditorProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const editorRef = useRef<HTMLDivElement>(null);
+  const statusBarRef = useRef<HTMLDivElement>(null);
+  const editorInstanceRef = useRef<any>(null);
+  const vimInstanceRef = useRef<any>(null);
 
   useEffect(() => {
     if (!editorRef.current || !statusBarRef.current) return;
 
-    let editor: any = null;
-    let vim: any = null;
     let modeObserver: MutationObserver | null = null;
 
     const initEditor = async () => {
@@ -124,7 +124,7 @@ const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
         const MonacoVim = (window as any).MonacoVim;
         
         // Create editor instance
-        editor = monaco.editor.create(editorRef.current, {
+        const editor = monaco.editor.create(editorRef.current, {
           value: content,
           language: 'markdown',
           theme: 'vs-dark',
@@ -136,8 +136,12 @@ const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
           automaticLayout: true
         });
         
+        // Store instance in ref for cleanup
+        editorInstanceRef.current = editor;
+        
         // Initialize Vim mode
-        vim = MonacoVim.initVimMode(editor, statusBarRef.current);
+        const vim = MonacoVim.initVimMode(editor, statusBarRef.current);
+        vimInstanceRef.current = vim;
 
         // Add mode change listener
         if (onModeChange && statusBarRef.current) {
@@ -145,17 +149,18 @@ const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
             for (const mutation of mutations) {
               if (mutation.type === 'childList') {
                 const statusText = statusBarRef.current?.textContent || '';
+                // Extract mode from status text
+                let mode = 'Normal';
                 if (statusText.includes('--INSERT--')) {
-                  onModeChange('Insert');
-                } else if (statusText.includes('--VISUAL--')) {
-                  onModeChange('Visual');
+                  mode = 'Insert';
                 } else if (statusText.includes('--VISUAL LINE--')) {
-                  onModeChange('Visual Line');
+                  mode = 'Visual Line';
                 } else if (statusText.includes('--VISUAL BLOCK--')) {
-                  onModeChange('Visual Block');
-                } else {
-                  onModeChange('Normal');
+                  mode = 'Visual Block';
+                } else if (statusText.includes('--VISUAL--')) {
+                  mode = 'Visual';
                 }
+                onModeChange(mode);
               }
             }
           });
@@ -173,17 +178,31 @@ const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
 
     initEditor();
 
-    // Cleanup function
+    // Cleanup function - follows React principles for proper resource cleanup
     return () => {
       modeObserver?.disconnect();
-      if (vim) {
-        try { vim.dispose(); } catch (e) { /* ignore */ }
+      
+      if (vimInstanceRef.current) {
+        try { vimInstanceRef.current.dispose(); } catch (e) { /* ignore */ }
+        vimInstanceRef.current = null;
       }
-      if (editor) {
-        try { editor.dispose(); } catch (e) { /* ignore */ }
+      
+      if (editorInstanceRef.current) {
+        try { editorInstanceRef.current.dispose(); } catch (e) { /* ignore */ }
+        editorInstanceRef.current = null;
       }
     };
-  }, [content, onModeChange]);
+  }, [content, onModeChange]); // Only re-run if these dependencies change
+
+  return { loading, error, editorRef, statusBarRef };
+}
+
+// Monaco Editor component with Vim binding
+const MonacoVimEditor = ({ content, onModeChange }: EditorProps) => {
+  const { loading, error, editorRef, statusBarRef } = useMonacoVim({ 
+    content, 
+    onModeChange 
+  });
 
   return (
     <div className="relative h-[500px] rounded-md overflow-hidden shadow-lg border border-neutral-700">
