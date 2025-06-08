@@ -38,8 +38,33 @@ const VIM_COMMANDS: VimCommand[] = [
   { key: "yy", description: "Copy (yank) entire line" },
   { key: "p", description: "Paste after cursor" },
   { key: "u", description: "Undo" },
-  { key: "Ctrl+r", description: "Redo" }
+  { key: "Ctrl+r", description: "Redo" },
+  { key: "I", description: "Enter Insert mode at beginning of line" },
+  { key: "A", description: "Enter Insert mode at end of line" },
+  { key: "o", description: "Open new line below and switch to Insert mode" },
+  { key: "O", description: "Open new line above and switch to Insert mode" },
+  { key: "gg", description: "Go to the beginning of the file" },
+  { key: "G", description: "Go to the end of the file" },
+  { key: "v", description: "Enter Visual mode" },
+  { key: "V", description: "Enter Visual Line mode" },
+  { key: "Ctrl+v", description: "Enter Visual Block mode" },
+  { key: "C", description: "Change text from cursor to end of line" },
+  { key: "D", description: "Delete text from cursor to end of line" }
 ];
+export { VIM_COMMANDS };
+
+if (process.env.NODE_ENV === 'test') {
+  // Basic tests for VIM_COMMANDS array
+  console.assert(Array.isArray(VIM_COMMANDS), 'VIM_COMMANDS should be an array');
+  console.assert(VIM_COMMANDS.length >= 28, 'VIM_COMMANDS should have at least 28 entries');
+  // Additional tests to check presence of modifier commands
+  const keys = VIM_COMMANDS.map(cmd => cmd.key);
+  console.assert(keys.includes("I"), 'VIM_COMMANDS should include the "I" modifier');
+  console.assert(keys.includes("A"), 'VIM_COMMANDS should include the "A" modifier');
+  console.assert(keys.includes("o"), 'VIM_COMMANDS should include the "o" command');
+  console.assert(keys.includes("G"), 'VIM_COMMANDS should include the "G" command');
+  console.log("All VIM_COMMANDS tests passed.");
+}
 
 // Sample content with Vim tutorial
 const EDITOR_CONTENT = `# Vim Tutorial in Monaco Editor
