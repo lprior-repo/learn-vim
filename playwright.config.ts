@@ -4,10 +4,10 @@ import { devices } from "@playwright/test";
 const config: PlaywrightTestConfig = {
   testDir: "./tests",
   // Increased timeout to accommodate Monaco Editor loading
-  timeout: 30000,
+  timeout: 15000,
   expect: {
     // Increased timeout for expectations to accommodate loading
-    timeout: 15000,
+    timeout: 5000,
     toHaveScreenshot: {
       maxDiffPixels: 100,
     },
@@ -24,8 +24,8 @@ const config: PlaywrightTestConfig = {
     // Headless for speed
     headless: true,
     // Increased timeouts to accommodate Monaco Editor loading
-    actionTimeout: 15000,
-    navigationTimeout: 15000,
+    actionTimeout: 5000,
+    navigationTimeout: 5000,
     baseURL: "http://localhost:3000",
     // Enhanced debugging artifacts
     trace: "retain-on-failure",
@@ -50,8 +50,8 @@ const config: PlaywrightTestConfig = {
   webServer: {
     command: "bun run dev",
     port: 3000,
-    reuseExistingServer: true,
-    timeout: 30000,
+    reuseExistingServer: false,
+    timeout: 15000,
     stdout: "pipe",
     stderr: "pipe",
   },
