@@ -1,0 +1,1683 @@
+{
+  "commands": [
+    {
+      "slug": "s",
+      "keys": "s",
+      "mode": "normal",
+      "description": "Execute command: s",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "s",
+      "keys": "s",
+      "mode": "normal",
+      "description": "Execute command: s",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "s",
+      "keys": "S",
+      "mode": "normal",
+      "description": "Execute command: S",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "s",
+      "keys": "S",
+      "mode": "normal",
+      "description": "Execute command: S",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "m",
+      "keys": "M",
+      "mode": "normal",
+      "description": "Execute command: M",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "l",
+      "keys": "L",
+      "mode": "normal",
+      "description": "Execute command: L",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "h",
+      "keys": "h",
+      "mode": "normal",
+      "description": "Move cursor left",
+      "category": "basic-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "l",
+      "keys": "l",
+      "mode": "normal",
+      "description": "Move cursor right",
+      "category": "basic-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "j",
+      "keys": "j",
+      "mode": "normal",
+      "description": "Move cursor down",
+      "category": "basic-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "k",
+      "keys": "k",
+      "mode": "normal",
+      "description": "Move cursor up",
+      "category": "basic-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "gj",
+      "keys": "gj",
+      "mode": "normal",
+      "description": "Execute command: gj",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "gk",
+      "keys": "gk",
+      "mode": "normal",
+      "description": "Execute command: gk",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "w",
+      "keys": "w",
+      "mode": "normal",
+      "description": "Move to beginning of next word",
+      "category": "word-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "w",
+      "keys": "W",
+      "mode": "normal",
+      "description": "Move to beginning of next WORD",
+      "category": "word-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "e",
+      "keys": "e",
+      "mode": "normal",
+      "description": "Move to end of current word",
+      "category": "word-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "e",
+      "keys": "E",
+      "mode": "normal",
+      "description": "Move to end of current WORD",
+      "category": "word-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "b",
+      "keys": "b",
+      "mode": "normal",
+      "description": "Move to beginning of previous word",
+      "category": "word-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "b",
+      "keys": "B",
+      "mode": "normal",
+      "description": "Move to beginning of previous WORD",
+      "category": "word-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "ge",
+      "keys": "ge",
+      "mode": "normal",
+      "description": "Execute command: ge",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "ge",
+      "keys": "gE",
+      "mode": "normal",
+      "description": "Execute command: gE",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "{",
+      "mode": "normal",
+      "description": "Execute command: {",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "}",
+      "mode": "normal",
+      "description": "Execute command: }",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "(",
+      "mode": "normal",
+      "description": "Execute command: (",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": ")",
+      "mode": "normal",
+      "description": "Execute command: )",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "gg",
+      "keys": "gg",
+      "mode": "normal",
+      "description": "Go to first line",
+      "category": "advanced-movement",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "g",
+      "keys": "G",
+      "mode": "normal",
+      "description": "Go to last line",
+      "category": "advanced-movement",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "g_",
+      "keys": "g$",
+      "mode": "normal",
+      "description": "Execute command: g$",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "g_",
+      "keys": "g^",
+      "mode": "normal",
+      "description": "Execute command: g^",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "g0",
+      "keys": "g0",
+      "mode": "normal",
+      "description": "Execute command: g0",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "0",
+      "keys": "0",
+      "mode": "normal",
+      "description": "Move to beginning of line",
+      "category": "line-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "_",
+      "keys": "^",
+      "mode": "normal",
+      "description": "Move to first non-blank character",
+      "category": "line-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "_",
+      "keys": "+",
+      "mode": "normal",
+      "description": "Execute command: +",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "-",
+      "mode": "normal",
+      "description": "Execute command: -",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "_",
+      "mode": "normal",
+      "description": "Execute command: _",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "$",
+      "mode": "normal",
+      "description": "Move to end of line",
+      "category": "line-movement",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "_",
+      "keys": "%",
+      "mode": "normal",
+      "description": "Execute command: %",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": ";",
+      "mode": "normal",
+      "description": "Repeat last f/F/t/T",
+      "category": "advanced-movement",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "_",
+      "keys": ",",
+      "mode": "normal",
+      "description": "Repeat last f/F/t/T reversed",
+      "category": "advanced-movement",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "__",
+      "keys": "]`",
+      "mode": "normal",
+      "description": "Execute command: ]`",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "__",
+      "keys": "[`",
+      "mode": "normal",
+      "description": "Execute command: [`",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "]",
+      "mode": "normal",
+      "description": "Execute command: ]",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "[",
+      "mode": "normal",
+      "description": "Execute command: [",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_p",
+      "keys": "[p",
+      "mode": "normal",
+      "description": "Execute command: [p",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "|",
+      "mode": "normal",
+      "description": "Execute command: |",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "o",
+      "keys": "o",
+      "mode": "normal",
+      "description": "Open new line below",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "o",
+      "keys": "O",
+      "mode": "normal",
+      "description": "Open new line above",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "y",
+      "keys": "y",
+      "mode": "normal",
+      "description": "Yank (copy)",
+      "category": "copy-paste",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "c",
+      "keys": "c",
+      "mode": "normal",
+      "description": "Execute command: c",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "=",
+      "mode": "normal",
+      "description": "Execute command: =",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": ">",
+      "mode": "normal",
+      "description": "Execute command: >",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "g_",
+      "keys": "g~",
+      "mode": "normal",
+      "description": "Execute command: g~",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "gu",
+      "keys": "gu",
+      "mode": "normal",
+      "description": "Execute command: gu",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "gu",
+      "keys": "gU",
+      "mode": "normal",
+      "description": "Execute command: gU",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "n",
+      "keys": "n",
+      "mode": "normal",
+      "description": "Next search result",
+      "category": "search",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "n",
+      "keys": "N",
+      "mode": "normal",
+      "description": "Previous search result",
+      "category": "search",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "gn",
+      "keys": "gn",
+      "mode": "normal",
+      "description": "Execute command: gn",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "gn",
+      "keys": "gN",
+      "mode": "normal",
+      "description": "Execute command: gN",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "x",
+      "keys": "X",
+      "mode": "normal",
+      "description": "Delete character before cursor",
+      "category": "deletion",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "d",
+      "keys": "D",
+      "mode": "normal",
+      "description": "Delete to end of line",
+      "category": "deletion",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "d",
+      "keys": "D",
+      "mode": "normal",
+      "description": "Delete to end of line",
+      "category": "deletion",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "y",
+      "keys": "Y",
+      "mode": "normal",
+      "description": "Execute command: Y",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "y",
+      "keys": "Y",
+      "mode": "normal",
+      "description": "Execute command: Y",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "c",
+      "keys": "C",
+      "mode": "normal",
+      "description": "Execute command: C",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "c",
+      "keys": "C",
+      "mode": "normal",
+      "description": "Execute command: C",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "~",
+      "mode": "normal",
+      "description": "Execute command: ~",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "~",
+      "mode": "normal",
+      "description": "Execute command: ~",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "a",
+      "keys": "a",
+      "mode": "normal",
+      "description": "Insert after cursor",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "a",
+      "keys": "A",
+      "mode": "normal",
+      "description": "Insert at end of line",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "a",
+      "keys": "A",
+      "mode": "normal",
+      "description": "Insert at end of line",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "i",
+      "keys": "i",
+      "mode": "normal",
+      "description": "Insert before cursor",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "gi",
+      "keys": "gi",
+      "mode": "normal",
+      "description": "Execute command: gi",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "i",
+      "keys": "I",
+      "mode": "normal",
+      "description": "Insert at beginning of line",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "gi",
+      "keys": "gI",
+      "mode": "normal",
+      "description": "Execute command: gI",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "i",
+      "keys": "I",
+      "mode": "normal",
+      "description": "Insert at beginning of line",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "o",
+      "keys": "o",
+      "mode": "normal",
+      "description": "Open new line below",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "o",
+      "keys": "O",
+      "mode": "normal",
+      "description": "Open new line above",
+      "category": "insert-mode",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "v",
+      "keys": "v",
+      "mode": "normal",
+      "description": "Visual character mode",
+      "category": "visual-mode",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "v",
+      "keys": "V",
+      "mode": "normal",
+      "description": "Visual line mode",
+      "category": "visual-mode",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "gv",
+      "keys": "gv",
+      "mode": "normal",
+      "description": "Execute command: gv",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "j",
+      "keys": "J",
+      "mode": "normal",
+      "description": "Execute command: J",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "gj",
+      "keys": "gJ",
+      "mode": "normal",
+      "description": "Execute command: gJ",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "p",
+      "keys": "p",
+      "mode": "normal",
+      "description": "Paste after cursor",
+      "category": "copy-paste",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "p",
+      "keys": "P",
+      "mode": "normal",
+      "description": "Paste before cursor",
+      "category": "copy-paste",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "r",
+      "keys": "R",
+      "mode": "normal",
+      "description": "Execute command: R",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "u",
+      "keys": "u",
+      "mode": "normal",
+      "description": "Undo last change",
+      "category": "undo-redo",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "u",
+      "keys": "u",
+      "mode": "normal",
+      "description": "Undo last change",
+      "category": "undo-redo",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "u",
+      "keys": "U",
+      "mode": "normal",
+      "description": "Undo all changes on line",
+      "category": "undo-redo",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "zz",
+      "keys": "zz",
+      "mode": "normal",
+      "description": "Execute command: zz",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "z_",
+      "keys": "z.",
+      "mode": "normal",
+      "description": "Execute command: z.",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "zt",
+      "keys": "zt",
+      "mode": "normal",
+      "description": "Execute command: zt",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "z_",
+      "keys": "z-",
+      "mode": "normal",
+      "description": "Execute command: z-",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "zb",
+      "keys": "zb",
+      "mode": "normal",
+      "description": "Execute command: zb",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": ".",
+      "mode": "normal",
+      "description": "Execute command: .",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "_",
+      "keys": "?",
+      "mode": "normal",
+      "description": "Search backward",
+      "category": "search",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "_",
+      "keys": "*",
+      "mode": "normal",
+      "description": "Search word under cursor forward",
+      "category": "search",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "_",
+      "keys": "#",
+      "mode": "normal",
+      "description": "Search word under cursor backward",
+      "category": "search",
+      "difficulty": "intermediate"
+    },
+    {
+      "slug": "g_",
+      "keys": "g*",
+      "mode": "normal",
+      "description": "Execute command: g*",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "g_",
+      "keys": "g#",
+      "mode": "normal",
+      "description": "Execute command: g#",
+      "category": "misc",
+      "difficulty": "advanced"
+    },
+    {
+      "slug": "escape",
+      "keys": "<Esc>",
+      "mode": "insert",
+      "description": "Return to normal mode",
+      "category": "mode-switching",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "save",
+      "keys": ":w",
+      "mode": "command",
+      "description": "Save file",
+      "category": "file-operations",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "quit",
+      "keys": ":q",
+      "mode": "command",
+      "description": "Quit editor",
+      "category": "file-operations",
+      "difficulty": "beginner"
+    },
+    {
+      "slug": "save_quit",
+      "keys": ":wq",
+      "mode": "command",
+      "description": "Save and quit",
+      "category": "file-operations",
+      "difficulty": "beginner"
+    }
+  ],
+  "categories": {
+    "misc": [
+      {
+        "slug": "s",
+        "keys": "s",
+        "mode": "normal",
+        "description": "Execute command: s",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "s",
+        "keys": "s",
+        "mode": "normal",
+        "description": "Execute command: s",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "s",
+        "keys": "S",
+        "mode": "normal",
+        "description": "Execute command: S",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "s",
+        "keys": "S",
+        "mode": "normal",
+        "description": "Execute command: S",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "m",
+        "keys": "M",
+        "mode": "normal",
+        "description": "Execute command: M",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "l",
+        "keys": "L",
+        "mode": "normal",
+        "description": "Execute command: L",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gj",
+        "keys": "gj",
+        "mode": "normal",
+        "description": "Execute command: gj",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gk",
+        "keys": "gk",
+        "mode": "normal",
+        "description": "Execute command: gk",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "ge",
+        "keys": "ge",
+        "mode": "normal",
+        "description": "Execute command: ge",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "ge",
+        "keys": "gE",
+        "mode": "normal",
+        "description": "Execute command: gE",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "{",
+        "mode": "normal",
+        "description": "Execute command: {",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "}",
+        "mode": "normal",
+        "description": "Execute command: }",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "(",
+        "mode": "normal",
+        "description": "Execute command: (",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": ")",
+        "mode": "normal",
+        "description": "Execute command: )",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "g_",
+        "keys": "g$",
+        "mode": "normal",
+        "description": "Execute command: g$",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "g_",
+        "keys": "g^",
+        "mode": "normal",
+        "description": "Execute command: g^",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "g0",
+        "keys": "g0",
+        "mode": "normal",
+        "description": "Execute command: g0",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "+",
+        "mode": "normal",
+        "description": "Execute command: +",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "-",
+        "mode": "normal",
+        "description": "Execute command: -",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "_",
+        "mode": "normal",
+        "description": "Execute command: _",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "%",
+        "mode": "normal",
+        "description": "Execute command: %",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "__",
+        "keys": "]`",
+        "mode": "normal",
+        "description": "Execute command: ]`",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "__",
+        "keys": "[`",
+        "mode": "normal",
+        "description": "Execute command: [`",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "]",
+        "mode": "normal",
+        "description": "Execute command: ]",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "[",
+        "mode": "normal",
+        "description": "Execute command: [",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_p",
+        "keys": "[p",
+        "mode": "normal",
+        "description": "Execute command: [p",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "|",
+        "mode": "normal",
+        "description": "Execute command: |",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "c",
+        "keys": "c",
+        "mode": "normal",
+        "description": "Execute command: c",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "=",
+        "mode": "normal",
+        "description": "Execute command: =",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": ">",
+        "mode": "normal",
+        "description": "Execute command: >",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "g_",
+        "keys": "g~",
+        "mode": "normal",
+        "description": "Execute command: g~",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gu",
+        "keys": "gu",
+        "mode": "normal",
+        "description": "Execute command: gu",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gu",
+        "keys": "gU",
+        "mode": "normal",
+        "description": "Execute command: gU",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gn",
+        "keys": "gn",
+        "mode": "normal",
+        "description": "Execute command: gn",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gn",
+        "keys": "gN",
+        "mode": "normal",
+        "description": "Execute command: gN",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "y",
+        "keys": "Y",
+        "mode": "normal",
+        "description": "Execute command: Y",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "y",
+        "keys": "Y",
+        "mode": "normal",
+        "description": "Execute command: Y",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "c",
+        "keys": "C",
+        "mode": "normal",
+        "description": "Execute command: C",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "c",
+        "keys": "C",
+        "mode": "normal",
+        "description": "Execute command: C",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "~",
+        "mode": "normal",
+        "description": "Execute command: ~",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": "~",
+        "mode": "normal",
+        "description": "Execute command: ~",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gi",
+        "keys": "gi",
+        "mode": "normal",
+        "description": "Execute command: gi",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gi",
+        "keys": "gI",
+        "mode": "normal",
+        "description": "Execute command: gI",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gv",
+        "keys": "gv",
+        "mode": "normal",
+        "description": "Execute command: gv",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "j",
+        "keys": "J",
+        "mode": "normal",
+        "description": "Execute command: J",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "gj",
+        "keys": "gJ",
+        "mode": "normal",
+        "description": "Execute command: gJ",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "r",
+        "keys": "R",
+        "mode": "normal",
+        "description": "Execute command: R",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "zz",
+        "keys": "zz",
+        "mode": "normal",
+        "description": "Execute command: zz",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "z_",
+        "keys": "z.",
+        "mode": "normal",
+        "description": "Execute command: z.",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "zt",
+        "keys": "zt",
+        "mode": "normal",
+        "description": "Execute command: zt",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "z_",
+        "keys": "z-",
+        "mode": "normal",
+        "description": "Execute command: z-",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "zb",
+        "keys": "zb",
+        "mode": "normal",
+        "description": "Execute command: zb",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "_",
+        "keys": ".",
+        "mode": "normal",
+        "description": "Execute command: .",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "g_",
+        "keys": "g*",
+        "mode": "normal",
+        "description": "Execute command: g*",
+        "category": "misc",
+        "difficulty": "advanced"
+      },
+      {
+        "slug": "g_",
+        "keys": "g#",
+        "mode": "normal",
+        "description": "Execute command: g#",
+        "category": "misc",
+        "difficulty": "advanced"
+      }
+    ],
+    "basic-movement": [
+      {
+        "slug": "h",
+        "keys": "h",
+        "mode": "normal",
+        "description": "Move cursor left",
+        "category": "basic-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "l",
+        "keys": "l",
+        "mode": "normal",
+        "description": "Move cursor right",
+        "category": "basic-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "j",
+        "keys": "j",
+        "mode": "normal",
+        "description": "Move cursor down",
+        "category": "basic-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "k",
+        "keys": "k",
+        "mode": "normal",
+        "description": "Move cursor up",
+        "category": "basic-movement",
+        "difficulty": "beginner"
+      }
+    ],
+    "word-movement": [
+      {
+        "slug": "w",
+        "keys": "w",
+        "mode": "normal",
+        "description": "Move to beginning of next word",
+        "category": "word-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "w",
+        "keys": "W",
+        "mode": "normal",
+        "description": "Move to beginning of next WORD",
+        "category": "word-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "e",
+        "keys": "e",
+        "mode": "normal",
+        "description": "Move to end of current word",
+        "category": "word-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "e",
+        "keys": "E",
+        "mode": "normal",
+        "description": "Move to end of current WORD",
+        "category": "word-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "b",
+        "keys": "b",
+        "mode": "normal",
+        "description": "Move to beginning of previous word",
+        "category": "word-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "b",
+        "keys": "B",
+        "mode": "normal",
+        "description": "Move to beginning of previous WORD",
+        "category": "word-movement",
+        "difficulty": "beginner"
+      }
+    ],
+    "advanced-movement": [
+      {
+        "slug": "gg",
+        "keys": "gg",
+        "mode": "normal",
+        "description": "Go to first line",
+        "category": "advanced-movement",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "g",
+        "keys": "G",
+        "mode": "normal",
+        "description": "Go to last line",
+        "category": "advanced-movement",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "_",
+        "keys": ";",
+        "mode": "normal",
+        "description": "Repeat last f/F/t/T",
+        "category": "advanced-movement",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "_",
+        "keys": ",",
+        "mode": "normal",
+        "description": "Repeat last f/F/t/T reversed",
+        "category": "advanced-movement",
+        "difficulty": "intermediate"
+      }
+    ],
+    "line-movement": [
+      {
+        "slug": "0",
+        "keys": "0",
+        "mode": "normal",
+        "description": "Move to beginning of line",
+        "category": "line-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "_",
+        "keys": "^",
+        "mode": "normal",
+        "description": "Move to first non-blank character",
+        "category": "line-movement",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "_",
+        "keys": "$",
+        "mode": "normal",
+        "description": "Move to end of line",
+        "category": "line-movement",
+        "difficulty": "beginner"
+      }
+    ],
+    "insert-mode": [
+      {
+        "slug": "o",
+        "keys": "o",
+        "mode": "normal",
+        "description": "Open new line below",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "o",
+        "keys": "O",
+        "mode": "normal",
+        "description": "Open new line above",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "a",
+        "keys": "a",
+        "mode": "normal",
+        "description": "Insert after cursor",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "a",
+        "keys": "A",
+        "mode": "normal",
+        "description": "Insert at end of line",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "a",
+        "keys": "A",
+        "mode": "normal",
+        "description": "Insert at end of line",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "i",
+        "keys": "i",
+        "mode": "normal",
+        "description": "Insert before cursor",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "i",
+        "keys": "I",
+        "mode": "normal",
+        "description": "Insert at beginning of line",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "i",
+        "keys": "I",
+        "mode": "normal",
+        "description": "Insert at beginning of line",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "o",
+        "keys": "o",
+        "mode": "normal",
+        "description": "Open new line below",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "o",
+        "keys": "O",
+        "mode": "normal",
+        "description": "Open new line above",
+        "category": "insert-mode",
+        "difficulty": "beginner"
+      }
+    ],
+    "copy-paste": [
+      {
+        "slug": "y",
+        "keys": "y",
+        "mode": "normal",
+        "description": "Yank (copy)",
+        "category": "copy-paste",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "p",
+        "keys": "p",
+        "mode": "normal",
+        "description": "Paste after cursor",
+        "category": "copy-paste",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "p",
+        "keys": "P",
+        "mode": "normal",
+        "description": "Paste before cursor",
+        "category": "copy-paste",
+        "difficulty": "intermediate"
+      }
+    ],
+    "search": [
+      {
+        "slug": "n",
+        "keys": "n",
+        "mode": "normal",
+        "description": "Next search result",
+        "category": "search",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "n",
+        "keys": "N",
+        "mode": "normal",
+        "description": "Previous search result",
+        "category": "search",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "_",
+        "keys": "?",
+        "mode": "normal",
+        "description": "Search backward",
+        "category": "search",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "_",
+        "keys": "*",
+        "mode": "normal",
+        "description": "Search word under cursor forward",
+        "category": "search",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "_",
+        "keys": "#",
+        "mode": "normal",
+        "description": "Search word under cursor backward",
+        "category": "search",
+        "difficulty": "intermediate"
+      }
+    ],
+    "deletion": [
+      {
+        "slug": "x",
+        "keys": "X",
+        "mode": "normal",
+        "description": "Delete character before cursor",
+        "category": "deletion",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "d",
+        "keys": "D",
+        "mode": "normal",
+        "description": "Delete to end of line",
+        "category": "deletion",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "d",
+        "keys": "D",
+        "mode": "normal",
+        "description": "Delete to end of line",
+        "category": "deletion",
+        "difficulty": "beginner"
+      }
+    ],
+    "visual-mode": [
+      {
+        "slug": "v",
+        "keys": "v",
+        "mode": "normal",
+        "description": "Visual character mode",
+        "category": "visual-mode",
+        "difficulty": "intermediate"
+      },
+      {
+        "slug": "v",
+        "keys": "V",
+        "mode": "normal",
+        "description": "Visual line mode",
+        "category": "visual-mode",
+        "difficulty": "intermediate"
+      }
+    ],
+    "undo-redo": [
+      {
+        "slug": "u",
+        "keys": "u",
+        "mode": "normal",
+        "description": "Undo last change",
+        "category": "undo-redo",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "u",
+        "keys": "u",
+        "mode": "normal",
+        "description": "Undo last change",
+        "category": "undo-redo",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "u",
+        "keys": "U",
+        "mode": "normal",
+        "description": "Undo all changes on line",
+        "category": "undo-redo",
+        "difficulty": "beginner"
+      }
+    ],
+    "mode-switching": [
+      {
+        "slug": "escape",
+        "keys": "<Esc>",
+        "mode": "insert",
+        "description": "Return to normal mode",
+        "category": "mode-switching",
+        "difficulty": "beginner"
+      }
+    ],
+    "file-operations": [
+      {
+        "slug": "save",
+        "keys": ":w",
+        "mode": "command",
+        "description": "Save file",
+        "category": "file-operations",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "quit",
+        "keys": ":q",
+        "mode": "command",
+        "description": "Quit editor",
+        "category": "file-operations",
+        "difficulty": "beginner"
+      },
+      {
+        "slug": "save_quit",
+        "keys": ":wq",
+        "mode": "command",
+        "description": "Save and quit",
+        "category": "file-operations",
+        "difficulty": "beginner"
+      }
+    ]
+  },
+  "metadata": {
+    "totalCommands": 102,
+    "categories": [
+      "misc",
+      "basic-movement",
+      "word-movement",
+      "advanced-movement",
+      "line-movement",
+      "insert-mode",
+      "copy-paste",
+      "search",
+      "deletion",
+      "visual-mode",
+      "undo-redo",
+      "mode-switching",
+      "file-operations"
+    ],
+    "generatedAt": "2025-06-10T04:05:48.172Z"
+  }
+}

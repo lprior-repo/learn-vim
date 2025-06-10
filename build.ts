@@ -16,12 +16,9 @@ async function runBuild() {
   }
   mkdirSync(distDir, { recursive: true });
 
-  // Copy index.html
-  console.log("📋 Copying index.html...");
-  await Bun.write(
-    path.join(distDir, "index.html"),
-    await Bun.file("./src/index.html").text()
-  );
+  // Copy index.html (temporarily)
+  console.log("📋 Preparing index.html...");
+  const htmlContent = await Bun.file("./src/index.html").text();
 
   // Process CSS with Tailwind
   console.log("🎨 Processing CSS with Tailwind...");
@@ -50,16 +47,13 @@ async function runBuild() {
   const buildOptions: BuildConfig = {
     entrypoints: ["./src/App.tsx"],
     outdir: distDir,
-    naming: "App.js",
+    naming: "[name].[hash].js",
     minify: false, // Disable minification for easier debugging
     target: "browser",
     sourcemap: "inline", // Include source maps for debugging
     splitting: false, // Bundle everything into a single file
-    external: [
-      // External dependencies to be loaded via CDN
-      "monaco-editor",
-      "monaco-vim"
-    ],
+    // No external dependencies - include Monaco Editor in bundle
+    external: [],
     define: {
       // Define global variables for bundling
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
@@ -71,6 +65,26 @@ async function runBuild() {
   try {
     const result = await build(buildOptions);
     console.log(`✅ Built ${result.outputs.length} files`);
+    
+    // Get the generated filename
+    const jsOutput = result.outputs.find(output => output.path.endsWith('.js'));
+    if (!jsOutput) {
+      throw new Error('No JavaScript output found');
+    }
+    
+    const jsFilename = path.basename(jsOutput.path);
+    console.log(`📝 Generated JavaScript file: ${jsFilename}`);
+    
+    // Update HTML with correct script path
+    const updatedHtml = htmlContent.replace(
+      '<script type="module" src="/App.js"></script>',
+      `<script type="module" src="/${jsFilename}"></script>`
+    );
+    
+    // Write the updated HTML
+    await Bun.write(path.join(distDir, "index.html"), updatedHtml);
+    console.log("📋 HTML updated with correct script reference");
+    
   } catch (error) {
     console.error("❌ Error building JavaScript:", error);
     process.exit(1);

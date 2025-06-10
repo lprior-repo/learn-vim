@@ -3,46 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vim in Monaco Editor</title>
-    <!-- Load Monaco and Vim scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
-    <script>
-      // Configure Monaco loader
-      require.config({
-        paths: {
-          vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs',
-          'monaco-vim': 'https://cdn.jsdelivr.net/npm/monaco-vim@0.4.2/dist/monaco-vim'
-        }
-      });
-
-      // Load Monaco and Monaco-Vim sequentially
-      require(['vs/editor/editor.main'], function() {
-        console.log('Monaco loaded');
-        
-        require(['monaco-vim'], function(MonacoVim) {
-          console.log('Monaco-Vim loaded');
-          window.MonacoVim = MonacoVim;
-          document.dispatchEvent(new Event('monaco-vim-ready'));
-        }, function(error) {
-          console.error('Failed to load Monaco-Vim via AMD:', error);
-          
-          // Fallback: direct script loading
-          const script = document.createElement('script');
-          script.src = 'https://cdn.jsdelivr.net/npm/monaco-vim@0.4.2/dist/monaco-vim.js';
-          script.onload = function() {
-            console.log('Monaco-Vim loaded via direct script');
-            document.dispatchEvent(new Event('monaco-vim-ready'));
-          };
-          document.head.appendChild(script);
-        });
-      });
-    </script>
-    <link rel="stylesheet" href="index.css">
+    <title>Vim Trainer</title>
+    <!-- Monaco Editor and Vim are now bundled in App.js -->
+    <link rel="stylesheet" href="/index.css">
   </head>
   <body>
     <div id="root">
-      <div class="loader"></div>
+      <div class="loader">Loading Vim Trainer...</div>
     </div>
-    <script type="module" src="App.js"></script>
+    <script type="module" src="/App.js"></script>
   </body>
 </html>
