@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vim Trainer</title>
-    <!-- Monaco Editor and Vim are now bundled in App.js -->
+    <!-- Preload critical resources for faster loading -->
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preload" href="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js" as="script">
+    <link rel="preload" href="https://unpkg.com/monaco-vim@0.4.2/dist/monaco-vim.js" as="script">
+    <!-- Load Monaco Editor from CDN -->
+    <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+    <script src="https://unpkg.com/monaco-vim@0.4.2/dist/monaco-vim.js"></script>
     <link rel="stylesheet" href="/index.css">
   </head>
   <body>

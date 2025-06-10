@@ -16,6 +16,10 @@ async function runBuild() {
   }
   mkdirSync(distDir, { recursive: true });
 
+  // Determine if this is a production build
+  const isProduction = process.env.NODE_ENV === "production";
+  console.log(`🏗️  Building for ${isProduction ? "production" : "development"}`);
+
   // Copy index.html (temporarily)
   console.log("📋 Preparing index.html...");
   const htmlContent = await Bun.file("./src/index.html").text();
@@ -28,10 +32,17 @@ async function runBuild() {
     const autoprefixer = require("autoprefixer");
     
     const css = await Bun.file("./src/index.css").text();
-    const result = await postcss([
-      tailwindcss,
-      autoprefixer
-    ]).process(css, {
+    
+    // Configure plugins based on environment
+    const plugins = [tailwindcss, autoprefixer];
+    
+    // Add CSS nano for production minification instead of CSSO
+    if (isProduction) {
+      const cssnano = require("cssnano");
+      plugins.push(cssnano({ preset: 'default' }));
+    }
+    
+    const result = await postcss(plugins).process(css, {
       from: "./src/index.css",
       to: "./dist/index.css"
     });
@@ -47,13 +58,13 @@ async function runBuild() {
   const buildOptions: BuildConfig = {
     entrypoints: ["./src/App.tsx"],
     outdir: distDir,
-    naming: "[name].[hash].js",
-    minify: false, // Disable minification for easier debugging
+    naming: isProduction ? "[name].[hash].js" : "[name].js",
+    minify: isProduction, // Enable minification for production
     target: "browser",
-    sourcemap: "inline", // Include source maps for debugging
-    splitting: false, // Bundle everything into a single file
-    // No external dependencies - include Monaco Editor in bundle
-    external: [],
+    sourcemap: isProduction ? "external" : "inline", // External sourcemaps for production
+    splitting: isProduction, // Enable code splitting for production
+    // Make Monaco Editor external to reduce bundle size
+    external: ["monaco-editor", "monaco-vim"],
     define: {
       // Define global variables for bundling
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
